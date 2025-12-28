@@ -203,23 +203,22 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Commented out IPython magic to ensure Python compatibility.
-# %%writefile app.py
-# import streamlit as st
-# import pickle
-# 
-# model = pickle.load(open("fake_job_model.pkl", "rb"))
-# vectorizer = pickle.load(open("tfidf.pkl", "rb"))
-# 
-# st.title("Fake Job Prediction")
-# 
-# text = st.text_area("Enter job description")
-# 
-# if st.button("Predict"):
-#     text_vec = vectorizer.transform([text])
-#     prediction = model.predict(text_vec)
-# 
-#     if prediction[0] == 1:
-#         st.error("⚠️ Fake Job")
-#     else:
-#         st.success("✅ Real Job")
+ %%writefile app.py
+ import streamlit as st
+ import pickle
+ 
+ model = pickle.load(open("fake_job_model.pkl", "rb"))
+vectorizer = pickle.load(open("tfidf.pkl", "rb")) 
+st.title("Fake Job Prediction")
+ 
+ text = st.text_area("Enter job description")
+ 
+ if st.button("Predict"):
+     text_vec = vectorizer.transform([text])
+     prediction = model.predict(text_vec)
+ 
+     if prediction[0] == 1:
+         st.error("⚠️ Fake Job")
+     else:
+         st.success("✅ Real Job")
 
